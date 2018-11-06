@@ -1,4 +1,4 @@
-# Aplikasi Client Adimistrator
+# Aplikasi Client Raspberry PI
 
 ### Struktur Folder
 
