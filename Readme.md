@@ -7,7 +7,7 @@ Struktur file dan folder :
   - doc : berisi dokumentasi pengembangan Aplikasi
   - prototype : uji coba modul
   - src : library dan modul python
-  - static : Accessible folder
+  - static : HTML, CSS, JS, Image
   - template : page html
   - req.txt : list library yang digunakan (pip install -r req.txt)
 
