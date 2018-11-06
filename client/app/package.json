@@ -1,0 +1,28 @@
+{
+  "name": "infomet_nelayan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hipropascal/infomet_nelayan.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hipropascal/infomet_nelayan/issues"
+  },
+  "homepage": "https://github.com/hipropascal/infomet_nelayan#readme",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "leaflet": "^1.3.4"
+  },
+  "devDependencies": {
+    "html-loader": "^0.5.5",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
