@@ -9,12 +9,12 @@ Struktur file dan folder :
   - src : library dan modul python
   - static : Accessible folder
   - template : page html
-  - req.txt : list librari yang digunakan (pip install -r req.txt)
+  - req.txt : list library yang digunakan (pip install -r req.txt)
 
 ### Cara Install
 
 ```sh
-$ git clone https://github.com/hipropascal/INFO_MET.git
+$ git clone https://github.com/hipropascal/infomet_nelayan.git
 $ pip install -r req.txt
 $ python app.py
 ```
