@@ -4,5 +4,5 @@
 
 ```
 data -- Auto generated data
-template -- File static (HTML, CSS, JS)
+app -- File static (HTML, CSS, JS)
 ```
