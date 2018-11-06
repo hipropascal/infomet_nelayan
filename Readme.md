@@ -31,7 +31,7 @@ $ python app.py
 | /api/remove_group_area/<group_area>       | Remove group area          |req: group_area              | -                       |
 
 
-### Page Managemen Area
+### Page Management Area
 #### Routing : /
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/area_management.jpg?raw=true)
 
