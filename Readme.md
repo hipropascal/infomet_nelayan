@@ -18,6 +18,15 @@ $ git clone https://github.com/hipropascal/infomet_nelayan.git
 $ pip install -r req.txt
 $ python app.py
 ```
+#### 3rd Party library
+
+```
+-- Install proj
+$ brew install proj
+
+-- Install GDAL
+$ brew install gdal --HEAD
+```
 
 ### API LIST (Lihat app.py)
 
