@@ -28,7 +28,7 @@ $ brew install proj
 $ brew install gdal --HEAD
 ```
 
-### API LIST (Lihat app.py)
+## API LIST (Lihat app.py)
 
 | Routing                                   | Deskripsi                  | GET                         | POST                    |
 | ------------------------------------------|----------------------------|-----------------------------|------------------------ |
@@ -40,14 +40,13 @@ $ brew install gdal --HEAD
 | /api/remove_group_area/<group_area>       | Remove group area          |req: group_area              | -                       |
 
 
-### Page Management Area
-#### Routing : /
-### Desain Antarmuka Sistem Monitoring
+## Desain Antarmuka Sistem Monitoring
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/monitoring.jpg?raw=true)
-
+##
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/wilayah.jpg?raw=true)
-
+##
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/infomet.jpg?raw=true)
-
+##
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/data_logger.jpg?raw=true)
+##
 
