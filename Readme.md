@@ -34,10 +34,10 @@ $ brew install gdal --HEAD
 | ------------------------------------------|----------------------------|-----------------------------|------------------------ |
 | /                                         | Page Dashboard Utama       |res: HTML                    | -                       |
 | /area                                     | Page Area                  |res: HTML                    | -                       |
-| /api/get_group_area/                      | List Group Area            |res: JSON                    | -                       |
-| /api/get_area_geojson/<group_area>        | List area dalam group area |req: group_area|res: JSON    | -                       |
-| /api/post_group_area/<group_area>         | Update group area          |req: group_area res: Messege | req :File .json         |
-| /api/remove_group_area/<group_area>       | Remove group area          |req: group_area              | -                       |
+| /api/get_wilayah/                         | List Wilayah               |res: JSON                    | -                       |
+| /api/get_area_geojson/<wilayah>           | List area dalam group area |req: wilayah  res: JSON      | -                       |
+| /api/post_wilayah/<wilayah>               | Update Wilayah             |req: wilayah  res: Messege   | req :File .json         |
+| /api/remove_wilayah/<wilayah>             | Remove Wilayah             |req: wilayah                 | -                       |
 
 
 ## Desain Antarmuka Sistem Monitoring
