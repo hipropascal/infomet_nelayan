@@ -49,4 +49,6 @@ $ brew install gdal --HEAD
 ##
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/data_logger.jpg?raw=true)
 ##
+## Desain Antarmuka Sisfomet Raspberry Pi
+![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/raspi.jpg?raw=true)
 
