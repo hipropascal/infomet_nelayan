@@ -19,7 +19,7 @@ $ pip install -r req.txt
 $ python app.py
 ```
 
-### API LIST
+### API LIST (Lihat app.py)
 
 | Routing                                   | Deskripsi                  | GET                         | POST                    |
 | ------------------------------------------|----------------------------|-----------------------------|------------------------ |
