@@ -13,4 +13,4 @@ angular.module('infomet_nelayan')
             }
         }],
         template: require('./header-container.html')
-    })
+    });
