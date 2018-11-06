@@ -26,7 +26,7 @@ $ python app.py
 | /                                         | Page Dashboard Utama       |res: HTML                    | -                       |
 | /area                                     | Page Area                  |res: HTML                    | -                       |
 | /api/get_group_area/                      | List Group Area            |res: JSON                    | -                       |
-| /api/get_area_geojson/<group_area>        | List area dalam group area |req: group_area res: JSON    | -                       |
+| /api/get_area_geojson/<group_area>        | List area dalam group area |req: group_area|res: JSON    | -                       |
 | /api/post_group_area/<group_area>         | Update group area          |req: group_area res: Messege | req :File .json         |
 | /api/remove_group_area/<group_area>       | Remove group area          |req: group_area              | -                       |
 
