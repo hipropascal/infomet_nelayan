@@ -30,3 +30,8 @@ $ python app.py
 | /api/post_group_area/<group_area>         | Update group area          |req: group_area res: Messege | req :File .json         |
 | /api/remove_group_area/<group_area>       | Remove group area          |req: group_area              | -                       |
 
+
+### Page Managemen Area
+#### Routing : /
+![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/area_management.jpg?raw=true)
+
