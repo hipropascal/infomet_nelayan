@@ -19,19 +19,19 @@ $ pip install -r req.txt
 $ python app.py
 ```
 
-### API LIST
+### API LIST (Lihat app.py)
 
-```
+| Routing                                   | Deskripsi                  | GET                         | POST                    |
+| ------------------------------------------|----------------------------|-----------------------------|------------------------ |
+| /                                         | Page Dashboard Utama       |res: HTML                    | -                       |
+| /area                                     | Page Area                  |res: HTML                    | -                       |
+| /api/get_group_area/                      | List Group Area            |res: JSON                    | -                       |
+| /api/get_area_geojson/<group_area>        | List area dalam group area |req: group_area|res: JSON    | -                       |
+| /api/post_group_area/<group_area>         | Update group area          |req: group_area res: Messege | req :File .json         |
+| /api/remove_group_area/<group_area>       | Remove group area          |req: group_area              | -                       |
 
-/
 
-/area
+### Page Management Area
+#### Routing : /
+![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/area_management.jpg?raw=true)
 
-/api/get_group_area/
-
-/api/get_area_geojson/<group_area>
-
-/api/post_group_area/<group_area>
-
-/api/remove_group_area/<group_area>
-```
