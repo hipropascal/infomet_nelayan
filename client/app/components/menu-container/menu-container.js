@@ -4,9 +4,10 @@ angular.module('infomet_nelayan')
             menuContainerShow: '=',
             map: '='
         },
-        controller: ['$scope', class menuContainer {
-            constructor($scope) {
+        controller: ['$scope', 'api', class menuContainer {
+            constructor($scope, api) {
                 this.scope = $scope;
+                this.api = api;
             }
 
             $onInit() {
@@ -28,6 +29,18 @@ angular.module('infomet_nelayan')
                     if (res.features.length != 0) {
                         console.log('menuContainer simpan', res);
                     }
+                };
+
+                this.api.getGroupArea()
+                    .then((res) => {
+                        this.scope.groupArea = res;
+                    });
+
+                this.scope.getArea = (area) => {
+                    this.api.getAreaGeoJSON(area)
+                        .then((res) => {
+                            console.log(res);
+                        })
                 };
             }
         }],
