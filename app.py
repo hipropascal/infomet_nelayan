@@ -7,14 +7,10 @@ import json
 app = Flask(__name__, static_url_path="", static_folder="client/app")
 
 # Dashboard utama
-# @app.route('/')
-# def menu_dashboard():
-#     return render_template('area.html')
+@app.route('/')
+def menu_dashboard():
+    return render_template('index.html')
 
-# Managemen area
-@app.route('/area')
-def menu_area():
-    return app.send_static_file('index.html')
 
 # API list group area
 @app.route('/api/get_group_area/', methods=['GET', 'POST'])
