@@ -4,12 +4,12 @@ import shutil
 import os
 import json
 
-app = Flask(__name__)
+app = app = Flask(__name__, static_url_path="", static_folder="client/app")
 
 # Dashboard utama
 @app.route('/')
 def menu_dashboard():
-    return render_template('main.html')
+    return app.send_static_file('index.html')
 
 # Managemen area
 @app.route('/area')
@@ -52,4 +52,4 @@ def remove_group_area(group_area):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8182)
+    app.run(host='0.0.0.0', port=8182, debug=True)
