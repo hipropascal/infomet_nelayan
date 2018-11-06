@@ -44,7 +44,10 @@ $ brew install gdal --HEAD
 #### Routing : /
 ### Desain Antarmuka Sistem Monitoring
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/monitoring.jpg?raw=true)
+
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/wilayah.jpg?raw=true)
+
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/infomet.jpg?raw=true)
+
 ![alt text](https://github.com/hipropascal/infomet_nelayan/blob/master/doc/UI/data_logger.jpg?raw=true)
 
