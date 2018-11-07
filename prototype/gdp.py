@@ -1,10 +1,18 @@
-import geopandas
+import requests, json, geopandas as gpd
 
-path = geopandas.datasets.get_path('naturalearth_lowres')
-df = geopandas.read_file(path)
-# Add a column we'll use later
-df['gdp_pp'] = df['gdp_md_est'] / df['pop_est']
+def remoteGeoJSONToGDF(url, display = False):
+    """Import remote GeoJSON to a GeoDataFrame
+    Keyword arguments:
+    url -- URL to GeoJSON resource on web
+    display -- Displays geometries upon loading (default: False)
+    """
+    r = requests.get(url)
+    data = r.json()
+    gdf = gpd.GeoDataFrame.from_features(data['features'])
+    if display:
+        gdf.plot()
+    return gdf
 
-boroughs = geopandas.read_file(geopandas.datasets.get_path('nybb')).to_crs(epsg='4326')
-injurious_collisions = geopandas.read_file(
-    "https://github.com/ResidentMario/geoplot-data/raw/master/nyc-injurious-collisions.geojson")
+if __name__ == '__main__':
+    url = 'http://127.0.0.1:8182/api/get_area_geojson/Selat Bali'
+    remoteGeoJSONToGDF(url)

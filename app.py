@@ -21,8 +21,8 @@ def get_group_area():
 
 # API list area dalam wilayah
 @app.route('/api/get_area_geojson/<wilayah>', methods=['GET', 'POST'])
-def get_area(group_area):
-    return send_file('data/wilayah/{}.json'.format(group_area))
+def get_area(wilayah):
+    return send_file('data/wilayah/{}.json'.format(wilayah))
 
 
 # API untuk update area
