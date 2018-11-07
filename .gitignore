@@ -3,3 +3,4 @@ venv/
 data/raw/
 .vscode/
 client/app/node_modules/
+*.pyc
