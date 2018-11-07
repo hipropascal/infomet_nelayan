@@ -1,0 +1,7 @@
+PPI Karangsong       -6.307171, 108.356994
+PPI Paotere          -5.110350, 119.419188
+PPI Kota Agung       -5.500130, 104.620661
+PPI Pelabuhan Ratu   -6.987393, 106.543653
+PP Bajumulyo         -6.703174, 111.154716
+PP Sadeng            -8.190140, 110.798925
+PP Cikidang          -7.682402, 108.671829
