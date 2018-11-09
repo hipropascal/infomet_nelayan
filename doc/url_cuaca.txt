@@ -1,0 +1,15 @@
+
+url cuaca besok
+---------------
+http://maritim.bmkg.go.id/xml/wilayah_pelayanan/prakiraan_by_kode?kode=F.07&kategori=besok
+
+
+url cuaca hari ini
+------------------
+http://maritim.bmkg.go.id/xml/wilayah_pelayanan/prakiraan_by_kode?kode=F.07&kategori=hari_ini
+
+url inawave
+-------------
+user : renderofs
+pass : render2303
+http://172.19.1.121/render/netcdf/

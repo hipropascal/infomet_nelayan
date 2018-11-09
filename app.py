@@ -1,8 +1,10 @@
 from flask import Flask, render_template, jsonify, send_file,request
-from src import misc
+from src import misc, dl_nc, nc_gen_mask
 import shutil
 import os
 import json
+import time
+import threading
 
 app = Flask(__name__, static_url_path="", static_folder="client/app")
 
@@ -46,5 +48,20 @@ def remove_group_area(wilayah):
     os.remove(target_file)
 
 
+# Triger to pull Inawave
+@app.route('/trigger/inawave/')
+def triger_inawave():
+    threading.Thread(target=inawave_handler).start()
+    return jsonify({'messege': 'success'})
+
+
+def inawave_handler():
+    dl_nc.inawave()
+    time.sleep(5)
+    nc_gen_mask.render()
+
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8182, debug=True)
+    inawave_handler()
+    # app.run(host='0.0.0.0', port=8182, debug=True)
