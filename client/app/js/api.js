@@ -41,7 +41,7 @@ angular.module('infomet_nelayan')
                 method: 'POST',
                 url: `${this.urlServer}/api/post_wilayah/${wilayah}`,
                 dataType: 'json',
-                geojson: JSON.stringify(templateGeoJSON),
+                geojson: { geojson: templateGeoJSON },
                 headers: { "Content-Type": "application/json" }
             })
                 .then((res) => {
