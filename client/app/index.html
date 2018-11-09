@@ -8,6 +8,7 @@
     <title>Sistem Infomet Nelayan BMKG</title>
     <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="./node_modules/leaflet.pm/dist/leaflet.pm.css">
+    <link rel="stylesheet" href="./node_modules/w3-css/3/w3.css">
     <style>
         body {
             position: absolute;
@@ -24,9 +25,16 @@
 </head>
 
 <body ng-app="infomet_nelayan">
-    <header-container menu-container-show="$ctrl.menuContainerShow"></header-container>
-    <menu-container menu-container-show="$ctrl.menuContainerShow" map="$ctrl.map"></menu-container>
-    <map-container map="$ctrl.map"></map-container>
+    <div style="height: 100%; display: flex; flex-direction: column;">
+        <header-container style="flex-basis: 120px;"></header-container>
+        <div style="flex: 1; display: flex;">
+            <side-bar style="flex-basis: 450px;" map="$ctrl.map" ng-init="$ctrl.lastLayer={}" last-layer="$ctrl.lastLayer"></side-bar>
+            <map-container style="flex: 1;" id="map" map="$ctrl.map"></map-container>
+        </div>
+        <div style="flex-basis: 20px; background-color: #0C3259; color: white; text-align: center; vertical-align: middle;">
+            BMKG Pusat Meteorologi Maritim 2018
+        </div>
+    </div>
     <script src="./dist/index.js"></script>
 </body>
 

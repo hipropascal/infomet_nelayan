@@ -1,8 +1,9 @@
 angular.module('infomet_nelayan')
-    .component('headerContainer', {
+    .component('modalEditWilayah', {
         bindings: {
+            showModalEditWilayah: '='
         },
-        controller: ['$scope', class headerContainer {
+        controller: ['$scope', class modalEditWilayah {
             constructor($scope) {
                 this.scope = $scope;
             }
@@ -11,5 +12,5 @@ angular.module('infomet_nelayan')
 
             }
         }],
-        template: require('./header-container.html')
+        template: require('./modal-edit-wilayah.html')
     });

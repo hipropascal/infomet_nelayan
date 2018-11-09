@@ -9,7 +9,7 @@ app = Flask(__name__, static_url_path="", static_folder="client/app")
 # Dashboard utama
 @app.route('/')
 def menu_dashboard():
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 
 # API list wilayah

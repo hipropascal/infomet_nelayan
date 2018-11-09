@@ -20,7 +20,8 @@
   "dependencies": {
     "angular": "^1.7.5",
     "leaflet": "^1.3.4",
-    "leaflet.pm": "^1.0.1"
+    "leaflet.pm": "^1.0.1",
+    "w3-css": "^4.1.0"
   },
   "devDependencies": {
     "html-loader": "^0.5.5",

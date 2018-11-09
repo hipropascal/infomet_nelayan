@@ -9,6 +9,7 @@ angular.module('infomet_nelayan')
             }
 
             $onInit() {
+                // init map
                 this.map = L.map('map').setView([51.505, -0.09], 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -30,6 +31,5 @@ angular.module('infomet_nelayan')
                 // add leaflet.pm controls to the map
                 this.map.pm.addControls(options);
             }
-        }],
-        template: require('./map-container.html')
+        }]
     });

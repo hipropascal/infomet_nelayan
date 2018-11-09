@@ -1,10 +1,10 @@
 angular.module('infomet_nelayan')
-    .component('menuContainer', {
+    .component('sideBar', {
         bindings: {
-            menuContainerShow: '=',
-            map: '='
+            map: '=',
+            lastLayer: '='
         },
-        controller: ['$scope', 'api', class menuContainer {
+        controller: ['$scope', 'api', class sideBar {
             constructor($scope, api) {
                 this.scope = $scope;
                 this.api = api;
@@ -31,18 +31,26 @@ angular.module('infomet_nelayan')
                     }
                 };
 
-                this.api.getGroupArea()
+                this.api.getWilayah()
                     .then((res) => {
-                        this.scope.groupArea = res;
+                        this.scope.wilayah = res;
                     });
 
-                this.scope.getArea = (area) => {
-                    this.api.getAreaGeoJSON(area)
+                this.scope.selectWilayah = (wilayah) => {
+                    this.api.getAreaGeoJSON(wilayah)
                         .then((res) => {
-                            console.log(res);
-                        })
+                            if (typeof (this.lastLayer.layer) !== 'undefined') {
+                                this.lastLayer.layer.removeFrom(this.map);
+                            }
+                            this.lastLayer['wilayah'] = wilayah;
+                            this.lastLayer['layer'] = L.geoJSON(res);
+                            this.map.fitBounds(this.lastLayer.layer.getBounds());
+                            this.lastLayer.layer.addTo(this.map);
+
+                            console.log(res, this.lastLayer.layer.toGeoJSON());
+                        });
                 };
             }
         }],
-        template: require('./menu-container.html')
+        template: require('./side-bar.html')
     });

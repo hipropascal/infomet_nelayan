@@ -1,0 +1,19 @@
+<style>
+    .w3-panel-costom {
+        padding: 0.01em 16px;
+        margin-top: 8px !important;
+    }
+</style>
+<div class="w3-container" style="padding-top: 8px;">
+    Tambah Wilayah <button class="w3-button w3-padding-small w3-teal" ng-click="$ctrl.showModalTambahWilayah=true">+</button>
+    <div ng-repeat="_wilayah in wilayah">
+        <div class="w3-bar" style="display: flex; padding-top: 8px;">
+            <button class="w3-bar-item w3-button w3-padding-small w3-blue" style="flex: 4;" ng-click="selectWilayah(_wilayah)">{{_wilayah}}</button>
+            <button class="w3-bar-item w3-button w3-padding-small w3-teal" style="flex: 1;" ng-click="$ctrl.showModalEditWilayah=true">Edit</button>
+            <button class="w3-bar-item w3-button w3-padding-small w3-teal" style="flex: 1;">Hapus</button>
+        </div>
+    </div>
+</div>
+
+<modal-tambah-wilayah show-modal-tambah-wilayah="$ctrl.showModalTambahWilayah" wilayah="wilayah"></modal-tambah-wilayah>
+<modal-edit-wilayah show-modal-edit-wilayah="$ctrl.showModalEditWilayah" wilayah="wilayah"></modal-edit-wilayah>
