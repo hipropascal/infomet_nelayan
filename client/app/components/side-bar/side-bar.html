@@ -1,12 +1,12 @@
 <div class="w3-container" style="height: 100%; display: flex; flex-direction: column;">
-    <div style="background-color: aliceblue; flex-basis: 80px; padding-top: 8px;">
+    <div style="flex-basis: 80px; padding-top: 8px;">
         <label>
             <b>Wilayah:</b>
         </label>
         <select class="w3-input w3-border w3-select" ng-options="o for o in wilayah" ng-model="wilayahSelected"
             ng-change="eventChangeWilayah()"></select>
     </div>
-    <div style="background-color: antiquewhite; flex: 1; overflow: scroll; overflow-x: hidden;">
+    <div style="flex: 1; overflow: scroll; overflow-x: hidden;" ng-show="$ctrl.lastWilayah.layer">
         <b>Daftar Area:</b>
         <div class="w3-bar" style="padding-top: 8px; display: flex;" ng-repeat="_area in area track by $index">
             <span class="w3-bar-item w3-button w3-left-align w3-blue w3-padding-small" style="flex: 4;" ng-mouseover="highlightArea($index)"
@@ -20,5 +20,7 @@
             <button class="w3-bar-item w3-button w3-teal w3-padding-small" style="flex: 1;" ng-click="removeArea($index)">Hapus</button>
         </div>
     </div>
-    <div style="background-color: aquamarine; flex-basis: 30px;">simpan</div>
+    <div style="flex-basis: 30px;" ng-show="$ctrl.lastWilayah.layer">
+        <button class="w3-bar w3-button w3-teal w3-padding-small" ng-click="updateWilayah()">Simpan</button>
+    </div>
 </div>

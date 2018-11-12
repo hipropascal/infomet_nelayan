@@ -3,9 +3,10 @@ angular.module('infomet_nelayan')
         bindings: {
             map: '='
         },
-        controller: ['$scope', 'api', class sideBar {
-            constructor($scope, api) {
+        controller: ['$scope', '$timeout', 'api', class sideBar {
+            constructor($scope, $timeout, api) {
                 this.scope = $scope;
+                this.timeout = $timeout;
                 this.api = api;
             }
 
@@ -17,13 +18,20 @@ angular.module('infomet_nelayan')
 
                 // pengolahan wilayah
                 this.lastWilayah = {};
+                let clearWilayah = () => {
+                    this.map.eachLayer((layer) => {
+                        if (layer['pm'] != undefined) {
+                            layer.removeFrom(this.map);
+                        }
+                    });
+                };
                 this.scope.eventChangeWilayah = () => {
                     this.api.getAreaGeoJSON(this.scope.wilayahSelected)
                         .then((res) => {
+                            // clear last layer
+                            clearWilayah();
+
                             // set layer
-                            if ((this.lastWilayah).hasOwnProperty('layer')) {
-                                this.lastWilayah.layer.removeFrom(this.map);
-                            }
                             this.lastWilayah['wilayah'] = this.scope.wilayahSelected;
                             this.lastWilayah['layer'] = L.geoJSON(res);
                             this.map.fitBounds(this.lastWilayah.layer.getBounds());
@@ -31,6 +39,8 @@ angular.module('infomet_nelayan')
 
                             // get area
                             this.scope.area = res.features;
+
+                            console.log(this.lastWilayah.layer.toGeoJSON());
                         });
                 };
 
@@ -49,7 +59,7 @@ angular.module('infomet_nelayan')
                     this.scope.area[i].properties.name = areaName;
 
                     // update lastWilayah
-                    this.lastWilayah.layer.removeFrom(this.map);
+                    clearWilayah();
                     let tempLayerGeoJSON = this.lastWilayah.layer.toGeoJSON();
                     tempLayerGeoJSON.features = this.scope.area;
                     this.lastWilayah.layer = L.geoJSON(tempLayerGeoJSON);
@@ -58,12 +68,46 @@ angular.module('infomet_nelayan')
 
                 // hapus area
                 this.scope.removeArea = (i) => {
-                    this.lastWilayah.layer.removeFrom(this.map);
+                    clearWilayah();
                     let tempLayerGeoJSON = this.lastWilayah.layer.toGeoJSON();
                     tempLayerGeoJSON.features.splice(i, 1);
                     this.scope.area = tempLayerGeoJSON.features;
                     this.lastWilayah.layer = L.geoJSON(tempLayerGeoJSON);
                     this.lastWilayah.layer.addTo(this.map);
+                };
+
+                // event saat area dibuat
+                this.timeout(() => {
+                    this.map.on('pm:create', (e) => {
+                        let tempNewLayerGeoJSON = e.layer.toGeoJSON();
+                        tempNewLayerGeoJSON.properties['name'] = 'Unnamed Shape';
+                        this.scope.area.push(tempNewLayerGeoJSON);
+                        this.scope.$apply();
+                    });
+
+                    this.map.on('pm:drawend', (e) => {
+                        let tempLayerGeoJSON = {
+                            type: 'FeatureCollection',
+                            features: []
+                        };
+                        this.map.eachLayer(function (layer) {
+                            if (layer['pm'] != undefined) {
+                                layer = layer.toGeoJSON();
+                                if (layer.type === 'Feature') {
+                                    tempLayerGeoJSON.features.push(layer);
+                                }
+                            }
+                        });
+                        tempLayerGeoJSON.features[tempLayerGeoJSON.features.length - 1].properties['name'] = 'Unnamed Shape';
+                        this.lastWilayah.layer = L.geoJSON(tempLayerGeoJSON);
+                        clearWilayah();
+                        this.lastWilayah.layer.addTo(this.map);
+                    });
+                });
+
+                // simpan update wilayah
+                this.scope.updateWilayah = () => {
+                    console.log(this.lastWilayah.layer.toGeoJSON());
                 };
             }
         }],
