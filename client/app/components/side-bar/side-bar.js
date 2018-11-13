@@ -39,8 +39,6 @@ angular.module('infomet_nelayan')
 
                             // get area
                             this.scope.area = res.features;
-
-                            console.log(this.lastWilayah.layer.toGeoJSON());
                         });
                 };
 
@@ -107,7 +105,7 @@ angular.module('infomet_nelayan')
 
                 // simpan update wilayah
                 this.scope.updateWilayah = () => {
-                    console.log(this.lastWilayah.layer.toGeoJSON());
+                    this.api.postWilayah(this.lastWilayah);
                 };
             }
         }],

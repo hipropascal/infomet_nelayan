@@ -26,28 +26,16 @@ angular.module('infomet_nelayan')
             return q.promise;
         }
 
-        postWilayah(wilayah) {
-            const templateGeoJSON = {
-                type: 'FeatureCollection',
-                features: []
-            };
-            let q = this.q.defer();
-            // this.http.post(`${this.urlServer}/api/post_wilayah/${wilayah}?geojson=${JSON.stringify(templateGeoJSON)}`)
-            //     .then((res) => {
-            //         res = res.data;
-            //         q.resolve(res);
-            //     });
+        postWilayah(lastWilayah) {
+            let fd = new FormData(),
+                blob = new Blob([angular.toJson(lastWilayah.layer.toGeoJSON())], { type: 'application/json' });
+            fd.append('geojson', blob);
             this.http({
+                url: `${this.urlServer}/api/post_wilayah/${lastWilayah.wilayah}`,
                 method: 'POST',
-                url: `${this.urlServer}/api/post_wilayah/${wilayah}`,
-                dataType: 'json',
-                geojson: { geojson: templateGeoJSON },
-                headers: { "Content-Type": "application/json" }
-            })
-                .then((res) => {
-                    res = res.data;
-                    q.resolve(res);
-                });
-            return q.promise;
+                data: fd,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            });
         }
     }]);

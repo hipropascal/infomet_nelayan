@@ -25,7 +25,7 @@ angular.module('infomet_nelayan')
                     drawCircle: false, // adds button to draw a cricle
                     cutPolygon: true, // adds button to cut a hole in a polygon
                     editMode: true, // adds button to toggle edit mode for all layers
-                    removalMode: true, // adds a button to remove layers
+                    removalMode: false, // adds a button to remove layers
                 };
 
                 // add leaflet.pm controls to the map

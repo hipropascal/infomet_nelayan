@@ -63,5 +63,5 @@ def inawave_handler():
 
 
 if __name__ == '__main__':
-    inawave_handler()
-    # app.run(host='0.0.0.0', port=8182, debug=True)
+#     inawave_handler()
+    app.run(host='0.0.0.0', port=8182, debug=True)
