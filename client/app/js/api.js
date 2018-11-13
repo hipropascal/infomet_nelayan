@@ -8,7 +8,7 @@ angular.module('infomet_nelayan')
 
         getWilayah() {
             let q = this.q.defer();
-            this.http.get(`${this.urlServer}/api/get_wilayah/`)
+            this.http.get(`${this.urlServer}/api/get_wilayah/`, { headers: { 'Cache-Control': 'no-cache' } })
                 .then((res) => {
                     res = res.data.wilayah;
                     q.resolve(res);
@@ -18,7 +18,7 @@ angular.module('infomet_nelayan')
 
         getAreaGeoJSON(area) {
             let q = this.q.defer();
-            this.http.get(`${this.urlServer}/api/get_area_geojson/${area}`)
+            this.http.get(`${this.urlServer}/api/get_area_geojson/${area}`, { headers: { 'Cache-Control': 'no-cache' } })
                 .then((res) => {
                     res = res.data;
                     q.resolve(res);
