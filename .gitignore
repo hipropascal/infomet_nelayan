@@ -3,6 +3,4 @@ venv/
 data/raw/
 .vscode/
 client/app/node_modules/
-# uji coba
-client/_app/
 *.nc

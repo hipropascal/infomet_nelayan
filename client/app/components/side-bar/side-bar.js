@@ -14,6 +14,10 @@ angular.module('infomet_nelayan')
                 this.api.getWilayah()
                     .then((res) => {
                         this.scope.wilayah = res;
+
+                        // buka wilayah di list teratas
+                        this.scope.wilayahSelected = this.scope.wilayah[0];
+                        this.scope.eventChangeWilayah();
                     });
 
                 // pengolahan wilayah
