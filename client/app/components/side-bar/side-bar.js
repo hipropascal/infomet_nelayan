@@ -51,7 +51,7 @@ angular.module('infomet_nelayan')
                 // pengolahan highlight
                 this.lastHighlightArea = {};
                 this.scope.highlightArea = (i) => {
-                    this.lastHighlightArea = L.geoJSON(this.lastWilayah.layer.toGeoJSON().features[i]).setStyle({ fillColor: 'red' });
+                    this.lastHighlightArea = L.geoJSON(this.lastWilayah.layer.toGeoJSON().features[i]).setStyle({ fillColor: 'grey', fillOpacity: .35 });
                     this.lastHighlightArea.addTo(this.map);
                 };
                 this.scope.removeHighlightArea = () => {
