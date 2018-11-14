@@ -2,13 +2,10 @@ angular.module('infomet_nelayan')
     .component('headerContainer', {
         bindings: {
         },
-        controller: ['$scope', class headerContainer {
-            constructor($scope) {
+        controller: ['$scope', '$location', class headerContainer {
+            constructor($scope, $location) {
                 this.scope = $scope;
-            }
-
-            $onInit() {
-
+                this.scope.$location = $location;
             }
         }],
         template: require('./header-container.html')

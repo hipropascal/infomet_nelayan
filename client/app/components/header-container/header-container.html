@@ -11,10 +11,18 @@
     </div>
     <div style="flex-basis: 30px; background-color: #0C3259; padding: 0 0 0 20px; color: white;">
         <div class="w3-bar">
-            <button class="w3-bar-item w3-button w3-padding-small">Monitoring</button>
-            <button class="w3-bar-item w3-button w3-padding-small">Wilayah</button>
-            <button class="w3-bar-item w3-button w3-padding-small">Infomet</button>
-            <button class="w3-bar-item w3-button w3-padding-small">Data Logger</button>
+            <a href="#!monitoring" class="w3-bar-item w3-button w3-padding-small" ng-style="{ backgroundColor: $location.path() === '/monitoring'? '#299C4C': '' }">
+                Monitoring
+            </a>
+            <a href="#/!" class="w3-bar-item w3-button w3-padding-small" ng-style="{ backgroundColor: $location.path() === '/'? '#299C4C': '' }">
+                Wilayah
+            </a>
+            <a href="#!infomet" class="w3-bar-item w3-button w3-padding-small" ng-style="{ backgroundColor: $location.path() === '/infomet'? '#299C4C': '' }">
+                Infomet
+            </a>
+            <a href="#!data-logger" class="w3-bar-item w3-button w3-padding-small" ng-style="{ backgroundColor: $location.path() === '/data-logger'? '#299C4C': '' }">
+                Data Logger
+            </a>
         </div>
     </div>
     <div style="flex-basis: 8px; background-color: #299C4C;"></div>
