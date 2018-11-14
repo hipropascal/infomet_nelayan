@@ -1,0 +1,14 @@
+<div class="w3-modal" style="z-index: 99999;" ng-style="{ display: $ctrl.showModalPeringatanSimpanWilayah? 'block': 'none' }">
+    <div class="w3-modal-content w3-card-4" style="width: 450px;">
+        <header class="w3-container w3-blue">
+            <span class="w3-button w3-display-topright" ng-click="$ctrl.eventChangeWilayah(); $ctrl.showModalPeringatanSimpanWilayah=false;">&times;</span>
+            <h4>Peringatan!</h4>
+        </header>
+        <div class="w3-container w3-padding">
+            Area telah diubah. Apakah wilayah ingin disimpan? 
+        </div>
+        <footer class="w3-container w3-padding">
+            <button class="w3-button w3-right w3-teal" ng-click="_updateWilayah(); $ctrl.showModalPeringatanSimpanWilayah=false">Simpan</button>
+        </footer>
+    </div>
+</div>

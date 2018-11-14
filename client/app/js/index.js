@@ -35,3 +35,4 @@ require('./api');
 require('../components/header-container/header-container');
 require('../components/map-container/map-container');
 require('../components/side-bar/side-bar');
+require('../components/modal-peringatan-simpan-wilayah/modal-peringatan-simpan-wilayah');

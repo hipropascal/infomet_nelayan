@@ -4,7 +4,7 @@
             <b>Wilayah:</b>
         </label>
         <select class="w3-input w3-border w3-select" ng-options="o for o in wilayah" ng-model="wilayahSelected"
-            ng-change="eventChangeWilayah()"></select>
+            ng-change="cekWilayahBerubah()"></select>
     </div>
     <div style="flex: 1; overflow: scroll; overflow-x: hidden;" ng-show="$ctrl.lastWilayah.layer">
         <b>Daftar Area:</b>
@@ -21,6 +21,8 @@
         </div>
     </div>
     <div style="flex-basis: 30px;" ng-show="$ctrl.lastWilayah.layer">
-        <button class="w3-bar w3-button w3-teal w3-padding-small" ng-click="updateWilayah()">Simpan</button>
+        <button class="w3-bar w3-button w3-teal w3-padding-small" ng-click="$ctrl.updateWilayah()">Simpan</button>
     </div>
 </div>
+<modal-peringatan-simpan-wilayah show-modal-peringatan-simpan-wilayah="$ctrl.showModalPeringatanSimpanWilayah"
+    event-change-wilayah="$ctrl.eventChangeWilayah()" update-wilayah="$ctrl.updateWilayah()"></modal-peringatan-simpan-wilayah>

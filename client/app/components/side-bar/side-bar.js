@@ -17,7 +17,7 @@ angular.module('infomet_nelayan')
 
                         // buka wilayah di list teratas
                         this.scope.wilayahSelected = this.scope.wilayah[0];
-                        this.scope.eventChangeWilayah();
+                        this.eventChangeWilayah();
                     });
 
                 // pengolahan wilayah
@@ -29,7 +29,7 @@ angular.module('infomet_nelayan')
                         }
                     });
                 };
-                this.scope.eventChangeWilayah = () => {
+                this.eventChangeWilayah = () => {
                     this.api.getAreaGeoJSON(this.scope.wilayahSelected)
                         .then((res) => {
                             // clear last layer
@@ -43,6 +43,8 @@ angular.module('infomet_nelayan')
 
                             // get area
                             this.scope.area = res.features;
+
+                            this.lastSavedWilayah = angular.copy(this.lastWilayah);
                         });
                 };
 
@@ -108,8 +110,18 @@ angular.module('infomet_nelayan')
                 });
 
                 // simpan update wilayah
-                this.scope.updateWilayah = () => {
-                    this.api.postWilayah(this.lastWilayah);
+                this.updateWilayah = () => {
+                    this.lastSavedWilayah = angular.copy(this.lastWilayah);
+                    return this.api.postWilayah(this.lastWilayah);
+                };
+
+                // cek perubahan wilayah
+                this.scope.cekWilayahBerubah = () => {
+                    if (JSON.stringify(this.lastWilayah.layer.toGeoJSON()) === JSON.stringify(this.lastSavedWilayah.layer.toGeoJSON())) {
+                        this.eventChangeWilayah();
+                    } else {
+                        this.showModalPeringatanSimpanWilayah = true;
+                    }
                 };
             }
         }],
