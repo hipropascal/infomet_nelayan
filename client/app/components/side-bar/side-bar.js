@@ -30,7 +30,7 @@ angular.module('infomet_nelayan')
                     });
                 };
                 this.eventChangeWilayah = () => {
-                    this.api.getAreaGeoJSON(this.scope.wilayahSelected)
+                    return this.api.getAreaGeoJSON(this.scope.wilayahSelected)
                         .then((res) => {
                             // clear last layer
                             clearWilayah();
@@ -123,6 +123,14 @@ angular.module('infomet_nelayan')
                         this.showModalPeringatanSimpanWilayah = true;
                     }
                 };
+
+                this.scope.$on('$routeChangeStart', (event, next, current) => {
+                    if (JSON.stringify(this.lastWilayah.layer.toGeoJSON()) !== JSON.stringify(this.lastSavedWilayah.layer.toGeoJSON())) {
+                        event.preventDefault();
+                        this.nextPath = next.$$route.originalPath;
+                        this.showModalPeringatanSimpanWilayah = true;
+                    }
+                });
             }
         }],
         template: require('./side-bar.html')
