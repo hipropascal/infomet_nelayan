@@ -8,16 +8,34 @@
     </div>
     <div style="flex: 1; overflow: scroll; overflow-x: hidden;" ng-show="$ctrl.lastWilayah.layer">
         <b>Daftar Area:</b>
-        <div class="w3-bar" style="padding-top: 8px; display: flex;" ng-repeat="_area in area track by $index">
-            <span class="w3-bar-item w3-button w3-left-align w3-blue w3-padding-small" style="flex: 4;" ng-mouseover="highlightArea($index)"
-                ng-mouseleave="removeHighlightArea()" ng-init="editStatus=false" ng-hide="editStatus">{{_area.properties.name}}</span>
-            <button class="w3-bar-item w3-button w3-teal w3-padding-small" style="flex: 1;" ng-hide="editStatus"
-                ng-click="editStatus=true; areaName=_area.properties.name;">Edit</button>
-            <input class="w3-bar-item w3-input w3-border w3-padding-small" type="text" style="flex: 4;" ng-show="editStatus"
-                ng-model="areaName">
-            <button class="w3-bar-item w3-button w3-teal w3-padding-small" style="flex: 1;" ng-init="editStatus=false"
-                ng-show="editStatus" ng-click="updateAreaName($index, areaName); editStatus=false;">Simpan</button>
-            <button class="w3-bar-item w3-button w3-teal w3-padding-small" style="flex: 1;" ng-click="removeArea($index)">Hapus</button>
+        <div style="padding-top: 8px; display: flex;">
+            <div style="flex: 2; display: flex;">
+                <div style="flex: 1;">Name</div>
+                <div style="flex-basis: 80px;">Category</div>
+            </div>
+            <div style="flex: 1;"></div>
+        </div>
+        <div style="padding-top: 8px; display: flex;" ng-repeat="_area in area track by $index">
+            <div class="w3-blue w3-hover-light-grey" style="flex: 2; display: flex;" ng-init="editStatus=false">
+                <div class="w3-padding-small" style="flex: 1;" ng-hide="editStatus" ng-mouseover="highlightArea($index)"
+                    ng-mouseleave="removeHighlightArea()">{{_area.properties.name}}</div>
+                <input class="w3-input w3-border w3-padding-small" type="text" style="flex: 1 1 auto; width: 0;"
+                    ng-show="editStatus" ng-init="properties={}" ng-model="properties['name']">
+                <div class="w3-padding-small" style="flex-basis: 80px;" ng-hide="editStatus" ng-mouseover="highlightArea($index)"
+                    ng-mouseleave="removeHighlightArea()">{{_area.properties.category}}</div>
+                <select class="w3-select w3-border w3-padding-small" style="flex-basis: 80px;" ng-show="editStatus"
+                    ng-model="properties['category']">
+                    <option value="hs">hs</option>
+                    <option value="hmax">hmax</option>
+                </select>
+            </div>
+            <div style="flex: 1; display: flex;">
+                <button class="w3-button w3-teal w3-padding-small" style="flex: 1;" ng-click="properties={ name: _area.properties.name, category: _area.properties.category }; editStatus=true;"
+                    ng-hide="editStatus">Edit</button>
+                <button class="w3-button w3-teal w3-padding-small" style="flex: 1;" ng-click="updateProperties($index, properties); editStatus=false;"
+                    ng-show="editStatus">Simpan</button>
+                <button class="w3-button w3-teal w3-padding-small" style="flex: 1;" ng-click="removeArea($index)">Hapus</button>
+            </div>
         </div>
     </div>
     <div style="flex-basis: 30px;" ng-show="$ctrl.lastWilayah.layer">

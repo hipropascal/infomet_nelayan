@@ -4,7 +4,7 @@ angular.module('infomet_nelayan', ['ngRoute'])
             .when('/', {
                 template: `
                 <div style="height: 100%; display: flex;">
-                    <side-bar style="flex-basis: 450px;" map="$ctrl.map"></side-bar>
+                    <side-bar style="flex-basis: 500px;" map="$ctrl.map"></side-bar>
                     <map-container style="flex: 1;" id="map" map="$ctrl.map"></map-container>
                 </div>
                 `
