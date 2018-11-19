@@ -1,0 +1,143 @@
+<div class="w3-container">
+    <p>
+        <button class="w3-button w3-teal" ng-init="showTambah=false; dataTambah={};" ng-click="dataTambah={}; showTambah=true">Tambah
+            Infomet</button>
+    </p>
+    <table class="w3-table w3-striped">
+        <thead>
+            <tr class="w3-teal">
+                <th>No</th>
+                <th>Sistem Infomet</th>
+                <th>Wilayah</th>
+                <th>Service Port</th>
+                <th>Remote Desktop</th>
+                <th>Waktu</th>
+                <th>Koordinat</th>
+                <th>Cuaca</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-show="showTambah">
+                <td></td>
+                <td>
+                    <!-- Sistem Infomet -->
+                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['sistem_infonet']">
+                </td>
+                <td>
+                    <!-- Wilayah -->
+                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['wilayah']">
+                </td>
+                <td>
+                    <!-- Service Port -->
+                    <input class="w3-input" type="number" style="width: 100%;" ng-model="dataTambah['service_port']">
+                </td>
+                <td>
+                    <!-- Remote Desktop -->
+                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['remote_desktop']">
+                </td>
+                <td>
+                    <!-- Waktu -->
+                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['waktu']">
+                </td>
+                <td style="max-width: 220px; padding-top: 0;">
+                    <!-- Koordinat -->
+                    <div style="display: flex;">
+                        <div style="flex: 1;">
+                            <label class="w3-tiny">Lat:</label>
+                            <input class="w3-input w3-padding-small" type="text" style="width: 100%;" ng-model="dataTambah['koordinat']['lat']">
+                        </div>
+                        <div style="flex: 1;">
+                            <label class="w3-tiny">Lon:</label>
+                            <input class="w3-input w3-padding-small" type="text" style="width: 100%;" ng-model="dataTambah['koordinat']['lon']">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <!-- Cuaca -->
+                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['cuaca']">
+                </td>
+                <td style="min-width: 150px; text-align: center; vertical-align: middle;">
+                    <button class="w3-button w3-small w3-padding-small w3-blue" ng-click="tambah(dataTambah); showTambah=false">Simpan</button>
+                    <button class="w3-button w3-small w3-padding-small w3-blue" ng-click="showTambah=false">Batal</button>
+                </td>
+            </tr>
+            <tr ng-repeat="_data in data track by $index">
+                <td>{{$index+1}}</td>
+                <td>
+                    <div ng-hide="editStatus">
+                        {{_data.sistem_infonet}}
+                    </div>
+                    <div ng-show="editStatus">
+                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.sistem_infonet">
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="editStatus">
+                        {{_data.wilayah}}
+                    </div>
+                    <div ng-show="editStatus">
+                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.wilayah">
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="editStatus">
+                        {{_data.service_port}}
+                    </div>
+                    <div ng-show="editStatus">
+                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.service_port">
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="editStatus">
+                        {{_data.remote_desktop}}
+                    </div>
+                    <div ng-show="editStatus">
+                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.remote_desktop">
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="editStatus">
+                        {{_data.waktu}}
+                    </div>
+                    <div ng-show="editStatus">
+                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.waktu">
+                    </div>
+                </td>
+                <td style="max-width: 220px;" ng-style="{paddingTop: editStatus? '0px': ''}">
+                    <div ng-hide="editStatus">
+                        {{_data.koordinat.lat}}, {{_data.koordinat.lon}}
+                    </div>
+                    <div style="display: flex;" ng-show="editStatus">
+                        <div style="flex: 1;">
+                            <label class="w3-tiny">Lat:</label>
+                            <input class="w3-input w3-padding-small" type="text" style="width: 100%;" ng-model="tempData.koordinat.lat">
+                        </div>
+                        <div style="flex: 1;">
+                            <label class="w3-tiny">Lon:</label>
+                            <input class="w3-input w3-padding-small" type="text" style="width: 100%;" ng-model="tempData.koordinat.lon">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="editStatus">
+                        {{_data.cuaca}}
+                    </div>
+                    <div ng-show="editStatus">
+                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.cuaca">
+                    </div>
+                </td>
+                <td style="min-width: 150px; text-align: center; vertical-align: middle;">
+                    <div ng-hide="editStatus">
+                        <button class="w3-button w3-small w3-padding-small w3-blue" ng-init="editStatus=false; tempData={}"
+                            ng-click="tempData=_data; editStatus=true;">Edit</button>
+                        <button class="w3-button w3-small w3-padding-small w3-blue">Hapus</button>
+                    </div>
+                    <div ng-show="editStatus">
+                        <button class="w3-button w3-small w3-padding-small w3-blue" ng-click="_data[$index]=tempData; editStatus=false;">Simpan</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

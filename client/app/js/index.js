@@ -18,8 +18,8 @@ angular.module('infomet_nelayan', ['ngRoute'])
             })
             .when('/infomet', {
                 template: `
-                <div style="height: 100%; background-color: yellow;">
-                    infomet
+                <div style="height: 100%;">
+                    <table-infomet></table-infomet>
                 </div>
                 `
             })
@@ -36,3 +36,4 @@ require('../components/header-container/header-container');
 require('../components/map-container/map-container');
 require('../components/side-bar/side-bar');
 require('../components/modal-peringatan-simpan-wilayah/modal-peringatan-simpan-wilayah');
+require('../components/table-infomet/table-infomet');
