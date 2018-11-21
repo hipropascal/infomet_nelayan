@@ -44,4 +44,14 @@ angular.module('infomet_nelayan')
                 });
             return q.promise;
         }
+
+        getWilayahPelayaran() {
+            let q = this.q.defer();
+            this.http.get(`${this.urlServer}/api/get_wilayah_pelayaran/`)
+                .then((res) => {
+                    res = res.data;
+                    q.resolve(res);
+                })
+            return q.promise;
+        }
     }]);

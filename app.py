@@ -61,6 +61,11 @@ def inawave_handler():
     nc_gen_mask.render()
 
 
+# API list wilayah pelayaran
+@app.route('/api/get_wilayah_pelayaran/', methods=['GET', 'POST'])
+def get_wilayah_pelayaran():
+    return send_file('data/wilayah_pelayaran.json')
+
 
 if __name__ == '__main__':
 #     inawave_handler()

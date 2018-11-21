@@ -26,7 +26,8 @@
                 </td>
                 <td>
                     <!-- Wilayah -->
-                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['wilayah']">
+                    <select class="w3-input w3-border w3-select" style="width: 100%;" ng-model="dataTambah['wilayah']"
+                        ng-options="o for o in wilayah"></select>
                 </td>
                 <td>
                     <!-- Service Port -->
@@ -55,7 +56,8 @@
                 </td>
                 <td>
                     <!-- Cuaca -->
-                    <input class="w3-input" type="text" style="width: 100%;" ng-model="dataTambah['cuaca']">
+                    <select class="w3-input w3-border w3-select" style="width: 100%;" ng-model="dataTambah['cuaca']"
+                        ng-options="o.wilayah for o in wilayahPelayaran"></select>
                 </td>
                 <td style="min-width: 150px; text-align: center; vertical-align: middle;">
                     <button class="w3-button w3-small w3-padding-small w3-blue" ng-click="tambah(dataTambah); showTambah=false">Simpan</button>
@@ -77,7 +79,8 @@
                         {{_data.wilayah}}
                     </div>
                     <div ng-show="editStatus">
-                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.wilayah">
+                        <select class="w3-input w3-border w3-select" style="width: 100%;" ng-model="tempData.wilayah"
+                            ng-options="o for o in wilayah"></select>
                     </div>
                 </td>
                 <td>
@@ -121,17 +124,18 @@
                 </td>
                 <td>
                     <div ng-hide="editStatus">
-                        {{_data.cuaca}}
+                        {{_data.cuaca.wilayah}}
                     </div>
                     <div ng-show="editStatus">
-                        <input class="w3-input" type="text" style="width: 100%;" ng-model="tempData.cuaca">
+                        <select class="w3-input w3-border w3-select" style="width: 100%;" ng-model="tempData.cuaca"
+                            ng-options="o.wilayah for o in wilayahPelayaran"></select>
                     </div>
                 </td>
                 <td style="min-width: 150px; text-align: center; vertical-align: middle;">
                     <div ng-hide="editStatus">
                         <button class="w3-button w3-small w3-padding-small w3-blue" ng-init="editStatus=false; tempData={}"
                             ng-click="tempData=_data; editStatus=true;">Edit</button>
-                        <button class="w3-button w3-small w3-padding-small w3-blue">Hapus</button>
+                        <button class="w3-button w3-small w3-padding-small w3-blue" ng-click="data.splice($index, 1)">Hapus</button>
                     </div>
                     <div ng-show="editStatus">
                         <button class="w3-button w3-small w3-padding-small w3-blue" ng-click="_data[$index]=tempData; editStatus=false;">Simpan</button>
