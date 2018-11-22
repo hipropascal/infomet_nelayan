@@ -4,3 +4,4 @@ data/raw/
 .vscode/
 client/app/node_modules/
 *.nc
+client/app_pi/venv/
