@@ -15,12 +15,12 @@ angular.module('infomet_nelayan')
                     .then((res) => {
                         this.scope.wilayah = res;
 
-                        // buka wilayah di list teratas
+                        // buka geojson di list teratas
                         this.scope.wilayahSelected = this.scope.wilayah[0];
                         this.eventChangeWilayah();
                     });
 
-                // pengolahan wilayah
+                // pengolahan geojson
                 this.lastWilayah = {};
                 let clearWilayah = () => {
                     this.map.eachLayer((layer) => {
@@ -111,13 +111,13 @@ angular.module('infomet_nelayan')
                     });
                 });
 
-                // simpan update wilayah
+                // simpan update geojson
                 this.updateWilayah = () => {
                     this.lastSavedWilayah = angular.copy(this.lastWilayah);
                     return this.api.postWilayah(this.lastWilayah);
                 };
 
-                // cek perubahan wilayah
+                // cek perubahan geojson
                 this.scope.cekWilayahBerubah = () => {
                     if (JSON.stringify(this.lastWilayah.layer.toGeoJSON()) === JSON.stringify(this.lastSavedWilayah.layer.toGeoJSON())) {
                         this.eventChangeWilayah();

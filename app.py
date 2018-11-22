@@ -1,5 +1,5 @@
-from flask import Flask, render_template, jsonify, send_file,request
-from src import misc, dl_nc, nc_gen_mask
+from flask import Flask, render_template, jsonify, send_file, request
+from src import misc, dl_nc, nc_mask
 import shutil
 import os
 import json
@@ -8,23 +8,24 @@ import threading
 
 app = Flask(__name__, static_url_path="", static_folder="client/app")
 
+
 # Dashboard utama
 @app.route('/')
 def menu_dashboard():
     return app.send_static_file('index.html')
 
 
-# API list wilayah
+# API list geojson
 @app.route('/api/get_wilayah/', methods=['GET', 'POST'])
 def get_group_area():
-    wilayah_list = [w.replace('.json','') for w in misc.list_file('data/wilayah/')]
-    return jsonify({'wilayah':wilayah_list})
+    wilayah_list = [w.replace('.json', '') for w in misc.list_file('data/wilayah/geojson/')]
+    return jsonify({'geojson': wilayah_list})
 
 
-# API list area dalam wilayah
+# API list area dalam geojson
 @app.route('/api/get_area_geojson/<wilayah>', methods=['GET', 'POST'])
 def get_area(wilayah):
-    return send_file('data/wilayah/{}.json'.format(wilayah))
+    return send_file('data/wilayah/geojson/{}.json'.format(wilayah))
 
 
 # API untuk update area
@@ -33,18 +34,18 @@ def get_area(wilayah):
 def post_group_area(wilayah):
     if request.method == 'POST':
         f = request.files['geojson']
-        tmp_file = 'data/tmp/tmp.json'
+        tmp_file = 'data/_tmp/_tmp.json'
         f.save(tmp_file)
-        target_file = 'data/wilayah/{}.json'.format(wilayah)
+        target_file = 'data/wilayah/geojson/{}.json'.format(wilayah)
         os.remove(target_file)
-        shutil.move(tmp_file,'data/wilayah/{}.json'.format(wilayah))
-        return jsonify({'messege':'success'})
+        shutil.move(tmp_file, 'data/wilayah/geojson/{}.json'.format(wilayah))
+        return jsonify({'messege': 'success'})
 
 
-# API untuk hapus wilayah
+# API untuk hapus geojson
 @app.route('/api/remove_wilayah/<wilayah>', methods=['GET', 'POST'])
 def remove_group_area(wilayah):
-    target_file = 'data/wilayah/{}.json'.format(wilayah)
+    target_file = 'data/wilayah/geojson/{}.json'.format(wilayah)
     os.remove(target_file)
 
 
@@ -58,7 +59,8 @@ def triger_inawave():
 def inawave_handler():
     dl_nc.inawave()
     time.sleep(5)
-    nc_gen_mask.render()
+    nc_mask.generate()
+    nc_mask.getval()
 
 
 # API list wilayah pelayaran
@@ -68,5 +70,5 @@ def get_wilayah_pelayaran():
 
 
 if __name__ == '__main__':
-#     inawave_handler()
+    # inawave_handler()
     app.run(host='0.0.0.0', port=8182, debug=True)
