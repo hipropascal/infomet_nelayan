@@ -10,7 +10,6 @@ import json
 import os
 
 
-
 def flaten_wave(wave_arr):
     new_arr = np.copy(wave_arr)
     gradients = [0, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7]
