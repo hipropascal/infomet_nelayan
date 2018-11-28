@@ -10,7 +10,7 @@ angular.module('infomet_nelayan')
             let q = this.q.defer();
             this.http.get(`${this.urlServer}/api/get_wilayah/`, { headers: { 'Cache-Control': 'no-cache' } })
                 .then((res) => {
-                    res = res.data.wilayah;
+                    res = res.data.geojson;
                     q.resolve(res);
                 })
             return q.promise;
