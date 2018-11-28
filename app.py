@@ -18,7 +18,8 @@ def menu_dashboard():
 # API list geojson
 @app.route('/api/get_wilayah/', methods=['GET', 'POST'])
 def get_group_area():
-    wilayah_list = [w.replace('.json', '') for w in misc.list_file('data/wilayah/geojson/')]
+    wilayah_list = [w.replace('.json', '')
+                    for w in misc.list_file('data/wilayah/geojson/')]
     return jsonify({'geojson': wilayah_list})
 
 
@@ -67,6 +68,14 @@ def inawave_handler():
 @app.route('/api/get_wilayah_pelayaran/', methods=['GET', 'POST'])
 def get_wilayah_pelayaran():
     return send_file('data/wilayah_pelayaran.json')
+
+
+@app.route('/api/post_capture/', methods=['GET', 'POST'])
+def post_capture():
+    if request.method == 'POST':
+        f = request.files['img']
+        f.save('data/capture/{}'.format(f.filename))
+        return jsonify({'messege': 'success'})
 
 
 if __name__ == '__main__':
